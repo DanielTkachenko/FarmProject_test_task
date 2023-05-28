@@ -21,19 +21,12 @@ public class Item2 : MonoBehaviour, IItem
     
     private IEnumerator ActionCorurine(Game game)
     {
-        var timer = 0f;
         int counter = 0;
         while (counter < 5)
         {
-            timer += Time.deltaTime;
-            if (timer > 5)
-            {
-                timer = 0;
-                counter++;
-                game.bank.GetMoney(this, 15);
-            }
-
-            yield return new WaitForEndOfFrame();
+            counter++;
+            game.bank.GetMoney(this, 15);
+            yield return new WaitForSeconds(2);
         }
         Destroy(this);
     }

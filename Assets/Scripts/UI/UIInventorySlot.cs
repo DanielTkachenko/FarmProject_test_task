@@ -11,7 +11,12 @@ public class UIInventorySlot : MonoBehaviour
     [SerializeField] private UIInventoryItem _item;
     [SerializeField] private Color _selectionColor;
     private Button _button;
-    
+
+
+    public void SetSelected(bool selected)
+    {
+        _item.SetSelected(selected);
+    }
 
     private void Start()
     {
@@ -24,6 +29,8 @@ public class UIInventorySlot : MonoBehaviour
         var parentUI = GetComponentInParent<UI>();
         var game = parentUI.GetGame();
         game.SetActiveInventoryItem(slot.item.parent);
+        var parent = GetComponentInParent<UIInventory>();
+        parent.SetSelected(this);
         Debug.Log($"[SELECTED ITEM {slot.item.parent.name}]");
     }
 

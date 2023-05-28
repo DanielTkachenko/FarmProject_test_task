@@ -27,6 +27,14 @@ public class UIInventory : MonoBehaviour
         
     }
 
+    public void SetSelected(UIInventorySlot slot)
+    {
+        foreach (var s in _uiInventorySlots)
+        {
+            s.SetSelected(false);
+        }
+        slot.SetSelected(true);
+    }
 
     public void Refresh(object sender)
     {

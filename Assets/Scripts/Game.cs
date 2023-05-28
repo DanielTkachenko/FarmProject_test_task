@@ -34,32 +34,30 @@ public class Game : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hitInfo) && hitInfo.collider.gameObject.layer != 5)
             {
                 var hitPoint = hitInfo.point;
-                PlaceObject(hitPoint);
+                if (_activeInventoryItem != null)
+                {
+                    PlaceObject(hitPoint);
+                } 
+                else
+                    Debug.Log("To items of that type");
             }
         }
     }
 
     private void PlaceObject(Vector3 position)
     {
-        if (_activeInventoryItem)
+        Debug.Log("hello");
+        IItem item = _activeInventoryItem.GetComponent<IItem>();
+        Instantiate(_activeInventoryItem, position, Quaternion.identity);
+        item.Action(this);
+        if (inventory.GetItemAmount(item.itemType) > 1)
         {
-            IItem item = _activeInventoryItem.GetComponent<IItem>();
-            Instantiate(_activeInventoryItem, position, Quaternion.identity);
-            item.Action(this);
-            if (inventory.GetItemAmount(item.itemType) > 1)
-            {
-                inventory.Remove(this, item.itemType);
-            }
-            else
-            {
-                inventory.Remove(this, item.itemType);
-                _activeInventoryItem = null;
-            }
-            
+            inventory.Remove(this, item.itemType);
         }
         else
         {
-            Debug.Log("No active item");
+            inventory.Remove(this, item.itemType);
+            _activeInventoryItem = null;
         }
         
     }

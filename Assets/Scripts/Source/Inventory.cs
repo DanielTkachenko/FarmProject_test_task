@@ -52,7 +52,6 @@ namespace DefaultNamespace
             {
                 emptySlot.SetItem(item);
                 emptySlot.amount += quantity;
-                Debug.Log(item.parent.name);
                 OnInventoryChangedEvent?.Invoke(sender);
                 return true;
             }

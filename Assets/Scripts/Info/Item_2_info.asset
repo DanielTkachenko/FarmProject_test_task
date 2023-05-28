@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 3
   _title: Item 2
-  _description: makes more money than Item
+  _description: makes 15 coins 5 times and disappears
   _price: 25
   _sprite: {fileID: 21300000, guid: e9394f8ec5f6ffe49896eceb94f63e28, type: 3}

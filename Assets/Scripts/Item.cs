@@ -11,7 +11,9 @@ namespace DefaultNamespace
         public Type itemType => GetType();
 
         public GameObject parent => gameObject;
-        
+
+        private bool state = true;
+
         public void Action(Game game)
         {
             this.enabled = true;
@@ -21,18 +23,12 @@ namespace DefaultNamespace
 
         private IEnumerator ActionCorurine(Game game)
         {
-            var timer = 0f;
             int counter = 0;
             while (counter < 3)
             {
-                timer += Time.deltaTime;
-                if (timer > 5)
-                {
-                    timer = 0;
-                    counter++;
-                    game.bank.GetMoney(this, 10);
-                }
-                yield return new WaitForEndOfFrame();
+                counter++;
+                game.bank.GetMoney(this, 10);
+                yield return new WaitForSeconds(2);
             }
             Destroy(this);
         }

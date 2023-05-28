@@ -8,6 +8,13 @@ public class UIInventoryItem : MonoBehaviour
     [SerializeField] private Image _itemIcon;
     [SerializeField] private Text _amountText;
 
+    public void SetSelected(bool selected)
+    {
+        if(selected)
+            _itemIcon.color = Color.green;
+        else
+            _itemIcon.color = Color.white;
+    }
 
     public void Refresh(InventorySlot slot)
     {

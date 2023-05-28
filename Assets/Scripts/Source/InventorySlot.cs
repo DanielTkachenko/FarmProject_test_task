@@ -18,10 +18,8 @@ namespace DefaultNamespace
 
         public void Clear()
         {
-            if(isEmpty)
-                return;
-            this.item = null;
             amount = 0;
+            this.item = null;
         }
     }
 }
